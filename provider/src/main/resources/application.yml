@@ -1,0 +1,18 @@
+server:
+  port: 9001
+
+dubbo:
+  application:
+    name: provider-${server.port}
+  scan:
+    base-packages: com.zwj.distributed.provider.*.service
+  protocol:
+    name: dubbo
+    port: 12345
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    file: ${user.home}/dubbo-cache/${spring.application.name}/dubbo.cache
+
+demo:
+  service:
+    version: 1.0.0

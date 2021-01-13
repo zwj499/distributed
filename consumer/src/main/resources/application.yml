@@ -1,0 +1,22 @@
+server:
+  port: 9101
+
+dubbo:
+  application:
+    name: consumer-${server.port}
+  scan:
+    base-packages: com.zwj.distributed.consumer.*.service
+  protocol:
+    name: dubbo
+    port: 12345
+  registry:
+    address: zookeeper://127.0.0.1:${embedded.zookeeper.port}
+    file: ${user.home}/dubbo-cache/${dubbo.application.name}/dubbo.cache
+
+demo:
+  service:
+    version: 1.0.0
+
+embedded:
+  zookeeper:
+    port: 2181
